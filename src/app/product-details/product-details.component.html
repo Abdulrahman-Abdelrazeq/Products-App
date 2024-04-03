@@ -1,0 +1,37 @@
+<div class="container d-flex justify-content-between pt-5 my-5">
+    <div class="d-flex flex-wrap w-50 gap-4 justify-content-between">
+        <img [src]="product.images['0']" class="w-100">
+        <img [src]="product.images['1']" style="width: 30%;">
+        <img [src]="product.images['2']" style="width: 30%;">
+        <img [src]="product.images['3']" style="width: 30%;">
+    </div>
+    <div style="width: 40%;">
+        <h1>{{product.title}}</h1>
+        <p>{{product.description}}</p>
+        <p class="border-bottom border-1 border-secondary pb-4 mb-4 text-warning">
+            <i class="" [ngClass]="product.rating >= 1 ? 'fa-solid fa-star' : product.rating >= 0.5 ?  'fa-solid fa-star-half-stroke' : 'fa-regular fa-star'"></i>
+            <i class="" [ngClass]="product.rating >= 2 ? 'fa-solid fa-star' : product.rating >= 1.5 ?  'fa-solid fa-star-half-stroke' : 'fa-regular fa-star'"></i>
+            <i class="" [ngClass]="product.rating >= 3 ? 'fa-solid fa-star' : product.rating >= 2.5 ?  'fa-solid fa-star-half-stroke' : 'fa-regular fa-star'"></i>
+            <i class="" [ngClass]="product.rating >= 4 ? 'fa-solid fa-star' : product.rating >= 3.5 ?  'fa-solid fa-star-half-stroke' : 'fa-regular fa-star'"></i>
+            <i class="" [ngClass]="product.rating >= 5 ? 'fa-solid fa-star' : product.rating >= 4.5 ?  'fa-solid fa-star-half-stroke' : 'fa-regular fa-star'"></i>
+        </p>
+
+
+        <p class="fw-bold fs-3">${{product.price}}</p>
+        <p class="fw-bold fs-3">After discount: {{product.price | discount: product.discountPercentage | currency}}</p>
+        <p class="badge rounded-pill px-2 mb-5" [ngClass]="product.stock == 0 ? 'text-bg-danger' : 'text-bg-success' " >{{product.stock == 0 ? 'Out of stock' : 'In stock'}}</p>
+        <p>More information</p>
+        <span class="badge rounded-pill px-2 text-dark" style="background-color: #d9d9d9;">Category</span>
+        <span class="badge rounded-pill px-2 text-dark ms-3" style="background-color: #d9d9d9;">Brand</span>
+
+        <div class="my-4 pt-4 border-top border-secondary">
+            <div class="input-group" style="width: fit-content;">
+                <div class="btn btn-light input-group-text rounded-start-4">-</div>
+                <input type="text" style="width: 40px; display: block;" class="form-control px-3 " disabled value="1">
+                <div class="btn btn-light input-group-text rounded-end-4">+</div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-dark rounded-5 px-5">Buy Now</button>
+        <button type="button" class="btn btn-light rounded-5 px-5 ms-2">Add to Cart</button>
+    </div>
+</div>

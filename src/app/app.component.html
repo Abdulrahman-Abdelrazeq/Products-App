@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/" routerLinkActive ="text-success fw-bold" [routerLinkActiveOptions]="{exact : true}">Products App</a>
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="register" routerLinkActive ="text-success fw-bold">Register</a>
+        <a class="nav-link" routerLink="login" routerLinkActive ="text-success fw-bold">Login</a>
+        <a class="nav-link" routerLink="cart" routerLinkActive ="text-success fw-bold">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="badge bg-success" style="font-size: 10px;">{{count}}</span>
+        </a>
+      </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+  integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+  crossorigin="anonymous" referrerpolicy="no-referrer" />

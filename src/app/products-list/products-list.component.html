@@ -1,0 +1,8 @@
+<div class="container d-block my-5 py-5">
+    <h5 class="mb-5">Welcome to our shopping website , Start browsing....</h5>
+    <div class="row justify-content-evenly">
+        @for(product of products; track product) {
+            <app-product class="card col-3 m-2 px-0 rounded-4" style="width: 300px;" [product]="product"></app-product>
+        }
+    </div> 
+</div>

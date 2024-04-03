@@ -1,0 +1,67 @@
+<div class="container">
+    <form [formGroup]="registerForm" (ngSubmit)="submitf()" class="mx-auto bg-body-tertiary p-4 rounded-4" style="max-width: 400px; margin-top: 150px;">
+        <div class="form-group mb-3">
+          <label>Name</label>
+          <input type="text" class="form-control" formControlName="fullname" placeholder="Enter your name">
+          @if(registerForm.controls['fullname'].invalid &&registerForm.controls['fullname'].touched) {
+            @if(registerForm.controls['fullname'].errors?.['required']){
+                <p class="form-text text-danger">Fullname is requird</p>
+            }
+            @if(registerForm.controls['fullname'].errors?.['pattern']){
+                <p class="form-text text-danger">Fullname is invalid</p>
+            }
+          }
+        </div>
+        <div class="form-group mb-3">
+          <label>Email</label>
+          <input type="email" class="form-control" formControlName="email" placeholder="Enter your email">
+          @if(registerForm.controls['email'].invalid &&registerForm.controls['email'].touched) {
+            @if(registerForm.controls['email'].errors?.['required']){
+                <p class="form-text text-danger">Email Address is requird</p>
+            }
+            @if(registerForm.controls['email'].errors?.['pattern']){
+                <p class="form-text text-danger">Email Address is invalid</p>
+            }
+          }
+        </div>
+        <div class="form-group mb-3">
+          <label>User Name</label>
+          <input type="text" class="form-control" formControlName="username" placeholder="Enter your user name">
+          @if(registerForm.controls['username'].invalid &&registerForm.controls['username'].touched) {
+            @if(registerForm.controls['username'].errors?.['required']){
+                <p class="form-text text-danger">Username is requird</p>
+            }
+            @if(registerForm.controls['username'].errors?.['pattern']){
+                <p class="form-text text-danger">Username is invalid</p>
+            }
+          }
+        </div>
+        <div class="form-group mb-3">
+          <label>Password</label>
+          <input type="password" class="form-control" formControlName="password" placeholder="Enter your password">
+          @if(registerForm.controls['password'].invalid &&registerForm.controls['password'].touched) {
+            @if(registerForm.controls['password'].errors?.['required']){
+                <p class="form-text text-danger">Password is requird</p>
+            }
+            @if(registerForm.controls['password'].errors?.['minlength']){
+                <p class="form-text text-danger"> password length not less than 8 characters</p>
+            }
+          }
+        </div>
+        <div class="form-group mb-4">
+          <label>Confirm Password</label>
+          <input type="password" class="form-control" formControlName="password2" placeholder="Confirm your password">
+          @if(registerForm.controls['password2'].invalid &&registerForm.controls['password2'].touched) {
+            @if(registerForm.controls['password2'].errors?.['required']){
+                <p class="form-text text-danger">Password is requird</p>
+            }
+            @if(registerForm.controls['password2'].errors?.['minlength']){
+                <p class="form-text text-danger"> password length not less than 8 characters</p>
+            }
+          }
+        </div>
+        <button type="submit" [disabled]="registerForm.invalid" class="btn btn-success">Register</button>
+    </form>
+
+    <p class="text-center mt-3">Already have account! <a class="text-dark" routerLink="../login" > login</a></p>  
+</div>

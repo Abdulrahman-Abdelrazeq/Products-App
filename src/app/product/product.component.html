@@ -1,0 +1,10 @@
+<img [src]='product.thumbnail' class="card-img-top rounded-top-4 bg-body-tertiary" height="200px">
+<div class="card-body px-3 d-flex flex-column justify-content-between">
+    <span class="badge rounded-pill position-absolute px-2" [ngClass]="product.stock | stock" style="left: 7px; top: 7px;">{{product.stock == 0 ? 'Out of stock' : 'In stock'}}</span>
+    <h5 class="card-title d-flex justify-content-between gap-5"><a (click)="goToDetails(product.id)" [routerLink]="['product-details', product.id]" class="text-dark  text-decoration-none">{{product.title}}</a> <span>{{product.price | discount: product.discountPercentage | currency}}</span></h5>
+    <p class="card-text">{{product.description}}</p>
+    <div>
+        <p class="card-text text-warning" [innerHTML]="product.rating | rating"></p>
+        <a class="btn btn-outline-dark rounded-5" (click)="addThisToCart()">Add to card</a>
+    </div>
+</div>

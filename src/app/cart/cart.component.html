@@ -1,0 +1,32 @@
+<div class="bg-light py-5 border-top" style="height: 94vh;">
+  <div class="container py-5">
+    <h1 class="pb-3 mb-5">Cart</h1>
+    <div class="row border-bottom py-2">
+      <h6 class="col-2"></h6>
+      <h6 class="col-5">Description</h6>
+      <h6 class="col-3 text-center">Quantity</h6>
+      <h6 class="col-1 text-center">Remove</h6>
+      <h6 class="col-1 text-center">Price</h6>
+    </div>
+    @for(product of productsCart; track product){
+      <div class="row py-3 border-bottom align-items-center">
+        <div class="col-2"><img width="100" [src]="product.thumbnail" alt=""></div>
+        <div class="col-5">
+          <h5>{{product.title}}</h5>
+          <p class="m-0" style="font-size: 12px;">{{product.description}}</p>
+        </div>
+        <div class="col-3">
+          <div class="input-group m-auto" style="width: fit-content;">
+            <div class="btn btn-secondary input-group-text rounded-0" (click)="quantityMinus(product, quantity)">-</div>
+            <input type="text" style="width: 40px; display: block;" class="form-control px-0 text-center" disabled value="1" #quantity>
+            <div class="btn btn-secondary input-group-text rounded-0" (click)="quantityPlus(product, quantity)">+</div>
+          </div>
+        </div>
+        <div class="col-1 text-center"><button class="btn btn-outline-dark rounded-0" (click)="deleteThisProduct(product)">x</button></div>
+        <div class="col-1 text-center">{{ quantity.value| productPrice: (product.price | discount: product.discountPercentage) | currency}}</div>
+      </div>
+    }
+    <button class="btn btn-success mt-5 px-5 py-3 text-center w-fit float-start" style="width: fit-content;">Buy now</button>
+    <div class="card mt-5 px-5 py-3 text-center w-fit float-end" style="width: fit-content;">${{allPrice}}</div>
+</div>
+</div>

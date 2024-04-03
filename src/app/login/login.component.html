@@ -1,0 +1,30 @@
+<div class="container">
+    <form #loginForm="ngForm" (ngSubmit)="submitForm(loginForm)" class="mx-auto bg-body-tertiary p-4 rounded-4" style="max-width: 400px; margin-top: 150px;">
+        <div class="form-group mb-3">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" name="email" required pattern="^[a-z][a-z 0-9 (-_.)]{3,40}@[a-z]{3,15}(.com|.net|.edu|.org)$" #email="ngModel" ngModel  placeholder="Enter your email">
+            @if(email.invalid && email.touched) {
+                @if(email.errors?.['required']){
+                    <p class="form-text text-danger">Email Address is requird</p>
+                }
+                @if(email.errors?.['pattern']){
+                    <p class="form-text text-danger">Email Address is invalid</p>
+                }
+            }
+        </div>
+        <div class="form-group mb-3">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" minlength="8" required #password="ngModel" ngModel placeholder="Enter your password">
+            @if(password.invalid && password.touched) {
+                @if(password.errors?.['required']){
+                    <p class="form-text text-danger">Password is requird</p>
+                }
+                @if(password.errors?.['minlength']){
+                    <p class="form-text text-danger">Password must be 8 or more characters</p>
+                }
+            }
+        </div>
+        <input type="submit" [disabled]="loginForm.invalid" class="form-control btn-primary btn" value="Login">
+    </form>
+    <p class="text-center mt-5">Don't gave account? <a class="text-dark" routerLink="../register"> Register</a></p>
+</div>
